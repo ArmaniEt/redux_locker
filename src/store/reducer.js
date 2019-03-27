@@ -1,5 +1,5 @@
 const initialState = {
-    digits: ""
+    digits: 1
 };
 
 const reducer = (state = initialState, action) => {
