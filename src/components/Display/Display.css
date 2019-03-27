@@ -1,0 +1,9 @@
+.display {
+    width: 250px;
+    height: 150px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+

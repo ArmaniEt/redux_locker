@@ -1,21 +1,32 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import Number from "./../../components/Number/Number";
+import Buttons from "./../../components/Buttons/Buttons";
+import Display from "./../../components/Display/Display";
+import './Locker.css';
 
-let oneToNine = new Array(9);
-for (let i = 1; i <= oneToNine.length; i++){
-    oneToNine.push(i);
-}
+const arr = [];
+const arrLength = 9;
+
 
 class Locker extends Component {
-    render() {
-        return <div className="display">
-            {oneToNine.map((currentVal) => {
-                return <Number
-                    clicked={() => this.props.inputDigit(currentVal)}
-                    value={currentVal}
-                />
 
+    fromOneToNine = () => {
+        for (let i = 0; i <= arrLength; i++) {
+            arr.push(i);
+        }
+
+        return arr;
+    };
+
+
+    render() {
+        return <div className="wrapper">
+            <Display/>
+            {this.fromOneToNine().map(currentVal => {
+                return <Buttons
+                    val={currentVal}
+                    key={currentVal}
+                />
             })}
         </div>
     }
