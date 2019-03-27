@@ -6,24 +6,20 @@ import './Locker.css';
 
 const arr = [];
 const arrLength = 9;
+for (let i = 0; i <= arrLength; i++) {
+    arr.push(i);
+}
 
 
 class Locker extends Component {
-
-    fromOneToNine = () => {
-        for (let i = 0; i <= arrLength; i++) {
-            arr.push(i);
-        }
-
-        return arr;
-    };
-
-
     render() {
         return <div className="wrapper">
-            <Display/>
-            {this.fromOneToNine().map(currentVal => {
+            <Display
+                digit={this.props.digits}
+            />
+            {arr.map(currentVal => {
                 return <Buttons
+                    clicked={this.props.getInput}
                     val={currentVal}
                     key={currentVal}
                 />
@@ -32,17 +28,20 @@ class Locker extends Component {
     }
 }
 
-
+// passed global redux state as props's to our component
 const mapStateToProps = state => {
     return {
         digits: state.digits
     }
 };
 
-const mapDispatchProps = dispatch => {
-  return {
-      inputDigit: (value) => dispatch({type: "INPUT", value})
-  }
+
+// methods which have access to dispatch for updating state
+const mapDispatchToProps = dispatch => {
+    return {
+        getInput: (value) => dispatch({type: "INPUT", value})
+    }
 };
 
-export default connect(mapStateToProps, mapDispatchProps)(Locker);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Locker);
