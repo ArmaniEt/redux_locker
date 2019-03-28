@@ -1,6 +1,6 @@
 .confirm_button_wrapper {
     margin-top: 10px;
-    display: block;
+    display: inline-block;
 }
 
 .confirm_button {

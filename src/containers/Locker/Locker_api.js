@@ -5,6 +5,7 @@ import Display from "./../../components/Display/Display";
 import './Locker.css';
 import Eraser from "./../../components/Eraser/Eraser";
 import Confirm from "./../../components/Confirm/Confirm";
+import Zero from "./../../components/Zero/Zero";
 
 const arr = [];
 const arrLength = 3;
@@ -15,7 +16,6 @@ for (let i = 1; i <= arrLength; i++) {
 
 class Locker extends Component {
     render() {
-        console.log(this.props);
         return <div className="wrapper">
             {this.props.access_granted ?
                 <p className="access_confirm_text">Access Granted</p>
@@ -54,12 +54,17 @@ class Locker extends Component {
                     />
                 })}
             </div>
-            <Eraser
-                onDelete={this.props.deleteDigit}
-            />
-            <Confirm
-                confirmation={this.props.confirmPassword}
-            />
+            <div>
+                <Eraser
+                    onDelete={this.props.deleteDigit}
+                />
+                <Zero
+                    clicked={this.props.getInput}
+                />
+                <Confirm
+                    confirmation={this.props.confirmPassword}
+                />
+            </div>
         </div>
     }
 }
