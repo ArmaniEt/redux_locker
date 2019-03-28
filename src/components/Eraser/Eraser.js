@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import './Eraser.css';
 
 
 const Eraser = (props) => {
-    return <div>
-        <button type="button">
+    return <div className="eraser_button_wrapper">
+        <button className="eraser_button" onClick={() => props.onDelete()} type="button">
             >
         </button>
     </div>

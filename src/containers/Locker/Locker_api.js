@@ -26,6 +26,9 @@ class Locker extends Component {
                     key={currentVal}
                 />
             })}
+            <Eraser
+                onDelete={this.props.deleteDigit}
+            />
         </div>
     }
 }
@@ -41,7 +44,8 @@ const mapStateToProps = state => {
 // methods which have access to dispatch for updating state
 const mapDispatchToProps = dispatch => {
     return {
-        getInput: (value) => dispatch({type: "INPUT", value})
+        getInput: (value) => dispatch({type: "INPUT", value}),
+        deleteDigit: () => dispatch({type: "DELETE"})
     }
 };
 

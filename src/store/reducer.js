@@ -8,6 +8,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "INPUT":
             return {...state, digits: (state.digits + action.value).substring(0, 4)};
+        case "DELETE":
+            return {...state, digits: state.digits.substr(0, state.digits.length - 1)};
         default:
             return state;
     }
