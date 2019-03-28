@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
+import './Confirm.css';
 
-
-const Confirm = () => {
-    return <div>
-
+const Confirm = (props) => {
+    return <div className="confirm_button_wrapper">
+        <button onClick={() => props.confirmation()} className="confirm_button" type="button">E</button>
     </div>
 };
 

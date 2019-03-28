@@ -4,30 +4,61 @@ import Buttons from "./../../components/Buttons/Buttons";
 import Display from "./../../components/Display/Display";
 import './Locker.css';
 import Eraser from "./../../components/Eraser/Eraser";
+import Confirm from "./../../components/Confirm/Confirm";
 
 const arr = [];
-const arrLength = 9;
-for (let i = 0; i <= arrLength; i++) {
+const arrLength = 3;
+for (let i = 1; i <= arrLength; i++) {
     arr.push(i);
 }
 
 
 class Locker extends Component {
     render() {
-        console.log(this.props.digits);
+        console.log(this.props);
         return <div className="wrapper">
+            {this.props.access_granted ?
+                <p className="access_confirm_text">Access Granted</p>
+                : null}
+            {this.props.access_denied ?
+                <p className="access_denied_text">Access Denied</p>
+
+                : null}
             <Display
                 digit={this.props.digits.replace(/\d/g, "*")}
             />
-            {arr.map(currentVal => {
-                return <Buttons
-                    clicked={this.props.getInput}
-                    val={currentVal}
-                    key={currentVal}
-                />
-            })}
+            <div>
+                {arr.map(currentVal => {
+                    return <Buttons
+                        clicked={this.props.getInput}
+                        val={currentVal}
+                        key={currentVal}
+                    />
+                })}
+            </div>
+            <div>
+                {arr.map((currentVal) => {
+                    return <Buttons
+                        clicked={this.props.getInput}
+                        val={currentVal + 3}
+                        key={currentVal + 3}
+                    />
+                })}
+            </div>
+            <div>
+                {arr.map((currentVal) => {
+                    return <Buttons
+                        clicked={this.props.getInput}
+                        val={currentVal + 6}
+                        key={currentVal + 6}
+                    />
+                })}
+            </div>
             <Eraser
                 onDelete={this.props.deleteDigit}
+            />
+            <Confirm
+                confirmation={this.props.confirmPassword}
             />
         </div>
     }
@@ -36,7 +67,9 @@ class Locker extends Component {
 // passed global redux state as props's to our component
 const mapStateToProps = state => {
     return {
-        digits: state.digits
+        digits: state.digits,
+        access_granted: state.access_granted,
+        access_denied: state.access_denied
     }
 };
 
@@ -45,7 +78,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getInput: (value) => dispatch({type: "INPUT", value}),
-        deleteDigit: () => dispatch({type: "DELETE"})
+        deleteDigit: () => dispatch({type: "DELETE"}),
+        confirmPassword: () => dispatch({type: "COMPARE"})
     }
 };
 

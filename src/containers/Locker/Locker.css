@@ -7,3 +7,11 @@
 .wrapper {
     text-align: center;
 }
+
+.access_confirm_text {
+    color: green;
+}
+
+.access_denied_text {
+    color: red;
+}

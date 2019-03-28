@@ -1,0 +1,9 @@
+.confirm_button_wrapper {
+    margin-top: 10px;
+    display: block;
+}
+
+.confirm_button {
+    padding: 10px 15px;
+    margin: 5px 5px;
+}
