@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Buttons from "./../../components/Buttons/Buttons";
 import Display from "./../../components/Display/Display";
 import './Locker.css';
+import Eraser from "./../../components/Eraser/Eraser";
 
 const arr = [];
 const arrLength = 9;
@@ -13,9 +14,10 @@ for (let i = 0; i <= arrLength; i++) {
 
 class Locker extends Component {
     render() {
+        console.log(this.props.digits);
         return <div className="wrapper">
             <Display
-                digit={this.props.digits}
+                digit={this.props.digits.replace(/\d/g, "*")}
             />
             {arr.map(currentVal => {
                 return <Buttons
